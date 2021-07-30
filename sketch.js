@@ -129,7 +129,7 @@ function draw() {
     //  nextBtn.CheckOvered() 
   }
   fill(255,0,0)
-  ellipse(mouseX, mouseY, 50, 50)
+  //ellipse(mouseX, mouseY, 50, 50)
   footer(100, sh-shgap*10, 200, 69,1.5)
 
  // ellipse(sw/2, sh-600, 50, 50)
