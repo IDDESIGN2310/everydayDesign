@@ -60,7 +60,7 @@ class Product{
         textSize(60);
         textLeading(60);
         textStyle(BOLD);
-        text(this.pn.toLowerCase(), this.x, 100, this.sw/2-100, this.th);
+        //text(this.pn.toLowerCase(), this.x, 100, this.sw/2-100, this.th);
 
 
         textFont(font_rubik)
