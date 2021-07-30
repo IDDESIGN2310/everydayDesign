@@ -44,10 +44,10 @@ class Product{
 
     display(){
 
-        let offsetImage = -200;
+        let offsetImage = 0;
         imageMode(CENTER);
         noTint();
-        image(this.img, this.sw/2, this.sw/2+100, this.sw+offsetImage, this.sw+offsetImage);
+        image(this.img, this.sw/2, this.sw/2, this.sw+offsetImage, this.sw+offsetImage);
         fill(255)
         noStroke()
         rectMode(CORNER)
