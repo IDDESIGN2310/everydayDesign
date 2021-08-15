@@ -137,6 +137,7 @@ function draw() {
  // ellipse(sw/2, sh-600, 50, 50)
 }
 
+/*
   function mouseClicked(){
     products[currentId].textToggle();
     if(nextBtn.clicked()){
@@ -155,7 +156,7 @@ function draw() {
       finNexPreGroup(currentGroup, nextGroupBtn, prevGroupBtn)
     }
   }
-
+*/
 
 
 function uiSetup(){
@@ -225,6 +226,7 @@ function finNexPreGroup(curID, nextGbtn, preGbtn){
 if(isAndroid){
   function mouseClicked(){
     products[currentId].textToggle();
+
     if(nextBtn.clicked()){
       npAction(1, 0, 9, currentGroup)
     }
