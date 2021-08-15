@@ -220,8 +220,8 @@ function finNexPreGroup(curID, nextGbtn, preGbtn){
     currentId = 9 * curID;
 
 }
-/*
-need to add this part for android / ISO
+
+//need to add this part for android / ISO
 if(isAndroid){
   function mouseClicked(){
     products[currentId].textToggle();
@@ -236,7 +236,5 @@ if(isAndroid){
       nextAction()
     }
   }
-}else{
-  }
 }
-*/
+
