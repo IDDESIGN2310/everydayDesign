@@ -177,7 +177,7 @@ function uiSetup(){
 }
 
 function npAction(direction, min , max, cG){
-  let loopMin = cG*9
+  let loopMin = cG*8
   let loopMax = loopMin + max
 
   //if(currentId >= min && currentId <= max){
