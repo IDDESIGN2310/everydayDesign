@@ -2,6 +2,8 @@ let data ={};
 let products =[];
 let sw = 0;
 let sh = 0;
+let rest_sh =0;
+let btn_base =0;
 let shgap = 0;
 let pImags = [];
 let maxNum = 35;
@@ -36,6 +38,8 @@ function preload() {
   data = loadJSON('assets/contents.json');
   sw = windowWidth;
   sh = windowHeight;
+  rest_sh = sh-sw;
+  btn_base = sw+rest_sh/2
   shgap = sh/100
 
   /*let pdata = data['products'];
@@ -128,7 +132,7 @@ function draw() {
   }
   fill(255,0,0)
   //ellipse(mouseX, mouseY, 50, 50)
-  footer(100, sh-shgap*10, 200, 69,1.5)
+  footer(100, sh-shgap*10, 200, 69,sw*0.0013)
 
  // ellipse(sw/2, sh-600, 50, 50)
 }
@@ -158,14 +162,14 @@ function uiSetup(){
   let colorNextPrevBtn = color(0, 120)
 
   // next/prev items
-  let npSize = 100
+  let npSize = sw*0.1
   let aspectio = 85/99
-  let uipos = sh-shgap*25
-  nextBtn = new UIBtn(sw/2+50, uipos, 100*aspectio, 100,pointToRight, colorNextPrevBtn)
-  prevBtn = new UIBtn(sw/2-50, uipos, 100*aspectio, 100,pointToLeft, colorNextPrevBtn)
+  let uipos = btn_base//sh-shgap*25
+  nextBtn = new UIBtn(sw/2+npSize/2, uipos, npSize*aspectio, npSize,pointToRight, colorNextPrevBtn)
+  prevBtn = new UIBtn(sw/2-npSize/2, uipos, npSize*aspectio, npSize,pointToLeft, colorNextPrevBtn)
   
   // next/prev group
-  let groupBtnSize = 250;
+  let groupBtnSize = sw*0.2;
   nextGroupBtn = new UIBtn(sw-groupBtnSize*aspectio/2,uipos,groupBtnSize*aspectio,groupBtnSize, pointToLeft, colorNextPrevBtn)
   prevGroupBtn = new UIBtn(groupBtnSize*aspectio/2,uipos,groupBtnSize*aspectio ,groupBtnSize, pointToRight, colorNextPrevBtn)
 

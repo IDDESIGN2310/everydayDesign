@@ -26,8 +26,8 @@ class Product{
         this.doShowText = false;
         this.clicked = false;
         this.bx = 175//this.sw-this.x-50
-        this.by = this.sw+100
-        this.r = 150
+        this.by = sw + ( sh-sw )/6//this.sw+100
+        this.r = sw*0.15//150
         this.textIcon = loadImage("assets/UI/ticon.png")
         this.mask = loadImage("assets/UI/maskLarge.png")
         this.color = color
@@ -82,7 +82,9 @@ class Product{
         textSize(this.fontSize);
         textLeading(this.fontLeadingTitle);
         let textDetail = this.pn+" ("+ this.ye+")"+"\n"+"Client: "+this.cl+"\n"+"Designer: "+this.pd
-        text(textDetail, this.x+this.r+50, this.cl_pos, this.tw-200, 300);
+        text(textDetail, this.x+this.r+50, this.by-this.r/2+10, this.tw-200, 300);
+        //text(textDetail, this.x+this.r+50, this.cl_pos, this.tw-200, 300);
+        this.by
         //--- Product title and information -- end //
     
         //---- Show hide product description -- start
@@ -107,7 +109,7 @@ class Product{
                 
                     
                     //this.thumbImag.mask(this.mask);
-                    image(this.thumbImag, this.bx, this.by, 150, 150)
+                    image(this.thumbImag, this.bx, this.by, this.r, this.r)
                     stroke(0,40)
                     strokeWeight(20)
                     noFill()
@@ -118,7 +120,7 @@ class Product{
                 fill(255)
                 let mwid = textWidth("+")
                 tint(this.color )
-                image(this.textIcon, this.bx, this.by,150,150)
+                image(this.textIcon, this.bx, this.by,this.r,this.r)
             
             }
         pop()
