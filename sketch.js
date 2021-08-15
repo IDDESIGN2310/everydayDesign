@@ -65,7 +65,15 @@ function loadData(){
   for(let i=0; i< productData.length; i++){
     let p = productData[i]
     //print(p)
-    designer = p.Designer1+" "+p.Designer2;
+    designer =""
+    if (p.Designer2 == "" ){
+      designer = p.Designer1+" "+p.Designer2;
+    }else{
+      designer = p.Designer1+" + "+p.Designer2;
+    }
+
+
+
     img = loadImage ("assets/p_imgs/"+p.Img_name+".jpg")
     products.push(new Product(
       sw*0.1, 
