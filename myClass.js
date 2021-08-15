@@ -9,27 +9,32 @@ class Product{
         this.pd = pDesigner;
         this.ye = pYear;
         this.des = pDes;
-        this.tw = sw-this.x*3;
+        this.tw = sw-this.x*2.1;
         this.th = sh*0.5;
         this.gap = sh*0.03;
-        this.pn_pos = sw+0;
-        this.cl_pos = sw//this.pn_pos+this.gap+20;
+        this.pn_pos = sw+50;
+        this.cl_pos = sw+35 //this.pn_pos+this.gap+20;
         this.pd_pos =this.cl_pos+this.gap;
         this.ye_pos =this.pd_pos+this.gap;
         this.des_pos = sh*0.1;
         this.img_pos = sh*0.05;
         this.img = image;
+        this.thumbImag = image;
         this.sw = sw;
         
         
         this.doShowText = false;
         this.clicked = false;
-        this.bx = this.sw-this.x-50
-        this.by = this.sw+70
+        this.bx = 175//this.sw-this.x-50
+        this.by = this.sw+100
         this.r = 150
         this.textIcon = loadImage("assets/UI/ticon.png")
         this.mask = loadImage("assets/UI/maskLarge.png")
         this.color = color
+
+        this.fontSize = this.sw*0.035
+        this.fontLeadingBody = this.fontSize*1.4
+        this.fontLeadingTitle = this.fontSize*1.2
 
     }
 
@@ -44,76 +49,80 @@ class Product{
 
     display(){
 
-        let offsetImage = 0;
-        imageMode(CENTER);
-        noTint();
-        image(this.img, this.sw/2, this.sw/2, this.sw+offsetImage, this.sw+offsetImage);
-        fill(255)
+        // start product image 
+        push()
+            let offsetImage = 0;
+            imageMode(CENTER);
+            noTint();
+            image(this.img, this.sw/2, this.sw/2, this.sw+offsetImage, this.sw+offsetImage);
+            fill(255)
+        pop()
+        // end product image
+
+        //White bg
         noStroke()
-        rectMode(CORNER)
+        fill(255)
         rect(0,this.sw, this.sw, this.sw)
+        //white bg
         
-        textFont(font_major)
+        //textFont(font_major)
        
         textAlign(LEFT);
         fill(0);
-        textSize(60);
-        textLeading(60);
-        textStyle(BOLD);
+
+        //textSize(60);
+        //textLeading(60);
+        //textStyle(BOLD);
         //text(this.pn.toLowerCase(), this.x, 100, this.sw/2-100, this.th);
+        //textSize(80);let asc = textAscent()*0.25
 
-
-        textFont(font_rubik)
-        textLeading(45);
-        textSize(40);
-        
-        let textDetail = " "+"\n"+"Year: "+ this.ye+"\n"+"Client: "+this.cl+"\n"+"Designer: "+this.pd
-
-        text(textDetail, this.x, this.cl_pos, this.tw, 300);
-
-        //text("Year: "+this.ye, this.x, this.ye_pos,this.tw, this.th);
+        //--- Product title and information --- start//
+        textStyle(BOLD)
+        //textFont(font_rubik)
+        textSize(this.fontSize);
+        textLeading(this.fontLeadingTitle);
+        let textDetail = this.pn+" ("+ this.ye+")"+"\n"+"Client: "+this.cl+"\n"+"Designer: "+this.pd
+        text(textDetail, this.x+this.r+50, this.cl_pos, this.tw-200, 300);
+        //--- Product title and information -- end //
     
-        //descriptiom
+        //---- Show hide product description -- start
         if(this.doShowText){
-            textSize(40)
-            textLeading(60);
-            textStyle(BOLD)
+            textStyle(NORMAL)
+            textSize(this.fontSize)
+            textLeading(this.fontLeadingBody);
             noStroke();
             fill(255,245)
             rect(0,0,this.sw,this.sw)
             fill(0);
             text(this.des, this.x, 100, this.tw, this.th);
         }
+        //--- show hide product descripttion end
 
+        // --- start icon / thumb nail show hide
+        push()
+        imageMode(CENTER);
+            if(this.doShowText){
+                fill(255)
+                let pwid = textWidth("–")
+                
+                    
+                    //this.thumbImag.mask(this.mask);
+                    image(this.thumbImag, this.bx, this.by, 150, 150)
+                    stroke(0,40)
+                    strokeWeight(20)
+                    noFill()
+                    circle(this.bx, this.by, this.r ,this.r);
+                    noStroke()
 
-
-        fill(0)
-        //circle(this.bx, this.by, this.r ,this.r);
-
-                //textToggle button visual
-        fill(125)
-        textSize(80);
-        let asc = textAscent()*0.25
-        
-        if(this.doShowText){
-            fill(255)
-            let pwid = textWidth("–")
-           // let mask = 
+            }else{
+                fill(255)
+                let mwid = textWidth("+")
+                tint(this.color )
+                image(this.textIcon, this.bx, this.by,150,150)
             
-            this.img.mask(this.mask);
-            image(this.img, this.bx, this.by, 150, 150)
-            stroke(0,40)
-            strokeWeight(20)
-            noFill()
-            circle(this.bx, this.by, this.r ,this.r);
-            noStroke()
-        }else{
-            fill(255)
-            let mwid = textWidth("+")
-            tint(this.color )
-            image(this.textIcon, this.bx, this.by ,150,150)
-            //text("+", this.bx-mwid/2, this.by+asc)
-        }
+            }
+        pop()
+        //-- end icon / thumb nail show hide
     }
 
 

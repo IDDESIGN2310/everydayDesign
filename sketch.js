@@ -30,7 +30,7 @@ let prevGroupID
 let currentGroupColor
 let ca_r = [203, 0, 88, 50, 95, 252, 246, 202, 255]
 let ca_g = [190, 0, 55, 76,184, 114, 22, 205, 205]
-let ca_b = [144, 0, 32, 51, 71, 44, 38, 206, 51]
+let ca_b = [144, 0, 32, 181, 71, 44, 38, 206, 51]
 
 function preload() {
   data = loadJSON('assets/contents.json');
@@ -104,8 +104,6 @@ function draw() {
   products[abs(currentId)].color = currentGroupColor
   products[abs(currentId)].display();
 
-
-
   if(doShowUIforNextPrev){
       nextBtn.color = currentGroupColor
       prevBtn.color = currentGroupColor
@@ -124,7 +122,7 @@ function draw() {
         let scaleOfIndicator = 4
         let indicatorW = 85*scaleOfIndicator
         let indicatorH = 99*scaleOfIndicator
-        image(pointToLeft, sw-indicatorW, -(indicatorH)/2, indicatorW, indicatorH)
+        image(pointToLeft, sw-indicatorW*0.7, -(indicatorH)/2, indicatorW, indicatorH)
       pop()
     //  nextBtn.CheckOvered() 
   }
@@ -159,12 +157,14 @@ function draw() {
 function uiSetup(){
   let colorNextPrevBtn = color(0, 120)
 
+  // next/prev items
   let npSize = 100
   let aspectio = 85/99
   let uipos = sh-shgap*25
   nextBtn = new UIBtn(sw/2+50, uipos, 100*aspectio, 100,pointToRight, colorNextPrevBtn)
   prevBtn = new UIBtn(sw/2-50, uipos, 100*aspectio, 100,pointToLeft, colorNextPrevBtn)
   
+  // next/prev group
   let groupBtnSize = 250;
   nextGroupBtn = new UIBtn(sw-groupBtnSize*aspectio/2,uipos,groupBtnSize*aspectio,groupBtnSize, pointToLeft, colorNextPrevBtn)
   prevGroupBtn = new UIBtn(groupBtnSize*aspectio/2,uipos,groupBtnSize*aspectio ,groupBtnSize, pointToRight, colorNextPrevBtn)
