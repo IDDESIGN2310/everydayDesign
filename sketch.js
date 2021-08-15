@@ -177,7 +177,7 @@ function uiSetup(){
 }
 
 function npAction(direction, min , max, cG){
-  let loopMin = cG*8
+  let loopMin = cG*9
   let loopMax = loopMin + max
 
   //if(currentId >= min && currentId <= max){
@@ -228,10 +228,10 @@ if(isAndroid){
     products[currentId].textToggle();
 
     if(nextBtn.clicked()){
-      npAction(1, 0, 9, currentGroup)
+      npAction(1, 0, 8, currentGroup)
     }
     if(prevBtn.clicked()){
-      npAction(-1,0,9,currentGroup)
+      npAction(-1,0,8,currentGroup)
     }
 
     if(nextGroupBtn.clicked()){
