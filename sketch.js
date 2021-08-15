@@ -226,14 +226,38 @@ if(isAndroid){
   function mouseClicked(){
     products[currentId].textToggle();
     if(nextBtn.clicked()){
-      nextAction()
+      npAction(1, 0, 9, currentGroup)
+    }
+    if(prevBtn.clicked()){
+      npAction(-1,0,9,currentGroup)
+    }
+
+    if(nextGroupBtn.clicked()){
+      npGAction(1)
+      finNexPreGroup(currentGroup, nextGroupBtn, prevGroupBtn)
+    } 
+    if( prevGroupBtn.clicked()){
+      npGAction(-1)
+      finNexPreGroup(currentGroup, nextGroupBtn, prevGroupBtn)
     }
   }
 }else if(ios){
   function mouseReleased(){
     products[currentId].textToggle();
     if(nextBtn.clicked()){
-      nextAction()
+      npAction(1, 0, 9, currentGroup)
+    }
+    if(prevBtn.clicked()){
+      npAction(-1,0,9,currentGroup)
+    }
+
+    if(nextGroupBtn.clicked()){
+      npGAction(1)
+      finNexPreGroup(currentGroup, nextGroupBtn, prevGroupBtn)
+    } 
+    if( prevGroupBtn.clicked()){
+      npGAction(-1)
+      finNexPreGroup(currentGroup, nextGroupBtn, prevGroupBtn)
     }
   }
 }
